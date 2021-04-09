@@ -3,7 +3,6 @@ import EpisodeItem from "../EpisodeItem/EpisodeItem";
 import "../index.css";
 
 function EpisodeBlock(props) {
-  console.log(props.X);
   return (
     <div
       className="episodes-box"
