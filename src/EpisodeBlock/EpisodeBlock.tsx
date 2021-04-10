@@ -16,7 +16,7 @@ function EpisodeBlock(props : PropsEpisodeBlock) {
     >
       {props.episodes.map((episode : any) => {
         return (
-          <EpisodeItem episode={episode} key={episode.episode_id}></EpisodeItem>
+          <EpisodeItem episode={episode} key={episode.id}></EpisodeItem>
         );
       })}
     </div>
