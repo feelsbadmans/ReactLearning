@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import EpisodeBlock from "../EpisodeBlock/EpisodeBlock";
 import "../index.css";
 
-function Carousel(props) {
-  const elementsCount = props.episodes.length;
-  let pagesCount = 0;
+interface PropsCarousel {
+  episodes : Array<object>,
+  key: number
+}
+
+function Carousel(props : PropsCarousel) {
+  const elementsCount : number = props.episodes.length;
+  let pagesCount : number = 0;
   elementsCount % 3 === 0
     ? (pagesCount = Math.floor(elementsCount / 3))
     : (pagesCount = Math.floor(elementsCount / 3) + 1);
@@ -34,10 +39,10 @@ function Carousel(props) {
         );
       })}
       <button className="default-button" id="go-prev" onClick={goPrev}>
-        <i class="fas fa-chevron-left"></i>
+        <i className="fas fa-chevron-left"></i>
       </button>
       <button className="default-button" id="go-next" onClick={goNext}>
-        <i class="fas fa-chevron-right"></i>
+        <i className="fas fa-chevron-right"></i>
       </button>
     </div>
   );

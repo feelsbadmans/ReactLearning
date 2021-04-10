@@ -5,6 +5,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+    text-align: center;
+}
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
@@ -43,8 +47,7 @@ code {
     border-radius: 10px;
 }
 
-
-.default-button{
+.default-button {
     z-index: 1;
     position: absolute;
     width: 15%;
@@ -54,14 +57,14 @@ code {
     outline: none;
 }
 
-.default-button:hover{
+.default-button:hover {
     cursor: pointer;
 }
 
-#go-prev{
-    left:0;
+#go-prev {
+    left: 0;
 }
 
-#go-next{
+#go-next {
     right: 0;
 }

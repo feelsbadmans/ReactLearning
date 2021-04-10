@@ -1,7 +1,12 @@
 import React from "react";
 import "../index.css";
+import { EpisodeType } from "../EpisodeType"
 
-function EpisodeItem(props) {
+interface PropsEpisodeItem {
+  episode: EpisodeType;
+}
+
+function EpisodeItem(props : PropsEpisodeItem) {
   return (
     <div className="episode">
       <h2>{props.episode.title}</h2>
