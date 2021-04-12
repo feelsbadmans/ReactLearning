@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import SeasonBlock from "./SeasonBlock/SeasonBlock";
 import "./index.css";
 
+
 function App(){
-  const [ListEpisodes, setListEpisodes] = useState({});
+  const [ListEpisodes, setListEpisodes] = useState([]);
   const [Loading, setLoading] = useState(true);
   useEffect(() => {
     const url = "https://breakingbadapi.com/api/episodes?series=Breaking+Bad";
@@ -15,10 +16,11 @@ function App(){
     }
     fetchData();
   }, []);
+
   return (
     <div>
       {Loading ? (
-        <h1 align="center">
+        <h1>
           Loading...
         </h1>
       ) : (
