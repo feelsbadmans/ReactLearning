@@ -1,10 +1,7 @@
 import React from "react";
 import Carousel from "../Carousel/Carousel";
 import "../../index.css";
-
-interface PropsSeasonBlock {
-  data : object
-}
+import { PropsSeasonBlock } from "../../types/interfaces";
 
 
 function SeasonBlock(props : PropsSeasonBlock) {

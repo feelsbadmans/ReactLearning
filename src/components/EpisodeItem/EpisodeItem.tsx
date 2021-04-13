@@ -1,9 +1,6 @@
 import "../../index.css";
-import { EpisodeType } from "../../types/EpisodeType"
+import { PropsEpisodeItem } from "../../types/interfaces";
 
-interface PropsEpisodeItem {
-  episode: EpisodeType;
-}
 
 function EpisodeItem(props : PropsEpisodeItem) {
   return (

@@ -5,20 +5,9 @@ import {useWindowWidth} from "../../hooks/useWindowsWidth"
 import {  useDispatch, useSelector } from "react-redux";
 import { findValueElementsPerPage } from "./actionsCarousel";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { PropsCarousel } from "../../types/interfaces";
+import { getPages } from "../functions";
 
-interface PropsCarousel {
-  episodes : Array<object>,
-  key: number
-}
-
-const getPages = (elementsCount:number, elementsPerPage : number) => {
-  if ( elementsCount % elementsPerPage === 0){
-    return Math.floor(elementsCount /elementsPerPage);
-  } 
-  else{
-    return Math.floor(elementsCount /elementsPerPage) + 1;
-  }
-}
 
 function Carousel(props : PropsCarousel) {
   const width : number = useWindowWidth();

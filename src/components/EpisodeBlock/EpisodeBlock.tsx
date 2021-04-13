@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import EpisodeItem from "../EpisodeItem/EpisodeItem";
 import "../../index.css";
+import { PropsEpisodeBlock } from "../../types/interfaces";
 
-interface PropsEpisodeBlock {
-  episodes: Array<object>,
-  X: number
-}
 
 function EpisodeBlock(props : PropsEpisodeBlock) {
   return (
