@@ -2,27 +2,20 @@ import React, { useEffect, useState } from "react";
 import EpisodeBlock from "../EpisodeBlock/EpisodeBlock";
 import "../../index.css";
 import {useWindowWidth} from "../../hooks/useWindowsWidth"
-import {  useDispatch, useSelector } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { findValueElementsPerPage } from "./actionsCarousel";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { getPages } from "../functions/functions";
+import { PropsCarousel } from "../../types/interfaces";
 
-interface PropsCarousel {
-  episodes : Array<object>,
-  key: number
-}
 
-const getPages = (elementsCount:number, elementsPerPage : number) => {
-  if ( elementsCount % elementsPerPage === 0){
-    return Math.floor(elementsCount /elementsPerPage);
-  } 
-  else{
-    return Math.floor(elementsCount /elementsPerPage) + 1;
-  }
-}
 
-function Carousel(props : PropsCarousel) {
+const Carousel = (props : PropsCarousel) => {
   const width : number = useWindowWidth();
-  const elementsCount : number = props.episodes.length;
+  const [elementsCount, setElementsCount] = useState<number>(0);
+  const [pagesCount, setPagesCount] = useState<number>(0);
+  setElementsCount(props.episodes.length);
+  
 
   const {elementsPerPage} = useTypedSelector(state => state.carouselBlockReducer);
   const dispatchPage = useDispatch();
@@ -31,7 +24,8 @@ function Carousel(props : PropsCarousel) {
     dispatchPage(findValueElementsPerPage(width, elementsCount));
   },[width])
 
-  let pagesCount : number = getPages(elementsCount, elementsPerPage);
+
+  setPagesCount(getPages(elementsCount, elementsPerPage))
   let episodesGroups = [];
   for (let i = 0; i < pagesCount; i++) {
     episodesGroups.push(props.episodes.slice(i * elementsPerPage, (i + 1) * elementsPerPage));

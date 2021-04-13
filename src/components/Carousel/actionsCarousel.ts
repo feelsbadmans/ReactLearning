@@ -1,22 +1,22 @@
-import { THREE, TWO, ONE } from "../../types/reduxTypes";
+import { ONE_PER_PAGE, THREE_PER_PAGE, TWO_PER_PAGE } from "../../types/reduxTypes";
 
 
-export function findValueElementsPerPage(width : number, elementsCount : number){
+export const findValueElementsPerPage = (width : number, elementsCount : number) => {
     return (dispatch : any) => {
         if (width > 1400) dispatch({
-            type:THREE,
+            type:THREE_PER_PAGE,
             payload:{
                 elementsCount : elementsCount
             }
         });
         else if (width <= 1400 && width > 700) dispatch({
-            type:TWO,
+            type:TWO_PER_PAGE,
             payload:{
                 elementsCount : elementsCount
             }
         }); 
         else if (width)dispatch({
-            type:ONE,
+            type:ONE_PER_PAGE,
             payload:{
                 elementsCount : elementsCount
             }

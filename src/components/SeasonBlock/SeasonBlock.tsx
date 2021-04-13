@@ -1,13 +1,10 @@
 import React from "react";
 import Carousel from "../Carousel/Carousel";
 import "../../index.css";
-
-interface PropsSeasonBlock {
-  data : object
-}
+import { PropsSeasonBlock } from "../../types/interfaces";
 
 
-function SeasonBlock(props : PropsSeasonBlock) {
+const SeasonBlock = (props : PropsSeasonBlock) => {
   let seasonNums = [], propsData :Array<any> = [];
   if (typeof(props.data) === 'object') {
     propsData = Object.values(props.data);

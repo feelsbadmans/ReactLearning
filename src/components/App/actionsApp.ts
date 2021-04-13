@@ -1,7 +1,7 @@
 import { FETCH_DATA_ERROR, FETCH_DATA_START, FETCH_DATA_SUCCESS } from "../../types/reduxTypes";
 import axios from 'axios';
 
-export function fetchData() {
+export const fetchData = () => {
     return (dispatch : any)  => {
         dispatch(fetchDataStart());
         const url = "https://breakingbadapi.com/api/episodes?series=Breaking+Bad";

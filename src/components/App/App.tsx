@@ -1,11 +1,11 @@
 import SeasonBlock from "../SeasonBlock/SeasonBlock";
 import "../../index.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchData } from "./actionsApp";
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
-const App: FC = () =>{
+const App = () =>{
   const dispatch = useDispatch();
 
   const { listEpisodes, loading, error} = useTypedSelector(state => state.loadingDataReducer);
