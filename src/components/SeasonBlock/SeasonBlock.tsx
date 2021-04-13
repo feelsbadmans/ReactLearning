@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "../Carousel/Carousel";
-import "../index.css";
+import "../../index.css";
 
 interface PropsSeasonBlock {
   data : object

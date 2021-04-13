@@ -1,30 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import EpisodeBlock from "../EpisodeBlock/EpisodeBlock";
-import "../index.css";
-import {useWindowWidth} from "../CustomHooks/WindowsWidthHook"
+import "../../index.css";
+import {useWindowWidth} from "../../hooks/useWindowsWidth"
+import {  useDispatch, useSelector } from "react-redux";
+import { findValueElementsPerPage } from "./actionsCarousel";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 interface PropsCarousel {
   episodes : Array<object>,
   key: number
 }
 
-
-function getElementsPerPage(width:number) : number{
-  if (width > 1400) return 3;
-  else if (width <= 1400 && width > 700) return 2; 
-  else return 1;
+const getPages = (elementsCount:number, elementsPerPage : number) => {
+  if ( elementsCount % elementsPerPage === 0){
+    return Math.floor(elementsCount /elementsPerPage);
+  } 
+  else{
+    return Math.floor(elementsCount /elementsPerPage) + 1;
+  }
 }
 
 function Carousel(props : PropsCarousel) {
   const width : number = useWindowWidth();
   const elementsCount : number = props.episodes.length;
-  let pagesCount : number = 0;
-  const elementsPerPage : number = getElementsPerPage(width);
-  elementsCount % elementsPerPage === 0
-    ? (pagesCount = Math.floor(elementsCount / elementsPerPage))
-    : (pagesCount = Math.floor(elementsCount / elementsPerPage) + 1);
 
-  
+  const {elementsPerPage} = useTypedSelector(state => state.carouselBlockReducer);
+  const dispatchPage = useDispatch();
+  console.log(props.key);
+  useEffect(() => {
+    dispatchPage(findValueElementsPerPage(width, elementsCount));
+  },[width])
+
+  let pagesCount : number = getPages(elementsCount, elementsPerPage);
   let episodesGroups = [];
   for (let i = 0; i < pagesCount; i++) {
     episodesGroups.push(props.episodes.slice(i * elementsPerPage, (i + 1) * elementsPerPage));
@@ -47,7 +54,7 @@ function Carousel(props : PropsCarousel) {
     <div className="carousel-box">
       {episodesGroups.map((episodes, index) => {
         return (
-          <EpisodeBlock episodes={episodes} key={index} X={X}></EpisodeBlock>
+          <EpisodeBlock episodes={episodes} X={X}></EpisodeBlock>
         );
       })}
       <button className="default-button" id="go-prev" onClick={goPrev}>

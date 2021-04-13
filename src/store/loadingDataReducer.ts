@@ -1,4 +1,4 @@
-import { FETCH_DATA_ERROR, FETCH_DATA_START, FETCH_DATA_SUCCESS} from "./reduxTypes";
+import { FETCH_DATA_ERROR, FETCH_DATA_START, FETCH_DATA_SUCCESS} from "../types/reduxTypes";
 
 
 
@@ -8,7 +8,6 @@ const initialState = {
     error: null
 };
 
-export type loadingDataState = ReturnType<typeof loadingDataReducer>;
 
 const loadingDataReducer = (state = initialState, action : any) => {
     switch(action.type){

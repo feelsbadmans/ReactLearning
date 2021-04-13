@@ -1,4 +1,4 @@
-import { FETCH_DATA_ERROR, FETCH_DATA_START, FETCH_DATA_SUCCESS } from "./Redux/reduxTypes";
+import { FETCH_DATA_ERROR, FETCH_DATA_START, FETCH_DATA_SUCCESS } from "../../types/reduxTypes";
 import axios from 'axios';
 
 export function fetchData() {

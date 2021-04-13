@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { applyMiddleware, compose, createStore } from "redux";
-import App from "./App";
+import App from "./components/App/App";
 import "./index.css";
-import rootReducer from "./Redux/rootReducer";
+import rootReducer from "./store/rootReducer";
 import reportWebVitals from "./reportWebVitals";
 import thunk from "redux-thunk" 
 

@@ -1,6 +1,5 @@
-import React from "react";
-import "../index.css";
-import { EpisodeType } from "../CustomTypes/EpisodeType"
+import "../../index.css";
+import { EpisodeType } from "../../types/EpisodeType"
 
 interface PropsEpisodeItem {
   episode: EpisodeType;

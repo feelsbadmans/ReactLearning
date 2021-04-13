@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import EpisodeItem from "../components/EpisodeItem/EpisodeItem";
+import EpisodeItem from "../EpisodeItem/EpisodeItem";
 import "../../index.css";
 
 interface PropsEpisodeBlock {
