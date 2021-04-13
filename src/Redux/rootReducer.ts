@@ -1,3 +1,9 @@
 import { combineReducers } from "redux";
+import loadingDataReducer from "./loadingDataReducer";
 
-export const rootReducer = combineReducers({})
+
+const rootReducer = combineReducers({
+    loadingDataReducer
+})
+
+export default rootReducer;

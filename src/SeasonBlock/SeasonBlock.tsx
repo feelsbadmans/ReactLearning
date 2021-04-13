@@ -3,14 +3,18 @@ import Carousel from "../Carousel/Carousel";
 import "../index.css";
 
 interface PropsSeasonBlock {
-  data : Array<object>
+  data : object
 }
 
 
 function SeasonBlock(props : PropsSeasonBlock) {
-  let seasonNums = props.data
-    .map((el : any) => el.season.replace(/\s/g, ""))
+  let seasonNums = [], propsData :Array<any> = [];
+  if (typeof(props.data) === 'object') {
+    propsData = Object.values(props.data);
+    seasonNums = propsData.map((el : any) => el.season.replace(/\s/g, ""))
     .filter((value, index, self) => self.indexOf(value) === index);
+  }
+    
   return (
     <div>
       {seasonNums.map((season) => {
@@ -18,7 +22,7 @@ function SeasonBlock(props : PropsSeasonBlock) {
           <div className="box">
             <h1>Season {season}</h1>
             <Carousel
-              episodes={props.data.filter((elem : any) => elem.season === season)}
+              episodes={propsData.filter((elem : any) => elem.season === season)}
               key = {season}
             ></Carousel>
           </div>
@@ -29,3 +33,4 @@ function SeasonBlock(props : PropsSeasonBlock) {
 }
 
 export default SeasonBlock;
+

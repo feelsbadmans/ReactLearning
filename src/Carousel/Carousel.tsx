@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import EpisodeBlock from "../EpisodeBlock/EpisodeBlock";
 import "../index.css";
 import {useWindowWidth} from "../CustomHooks/WindowsWidthHook"
-import { elementsPerPageReducer } from "../Redux/elementsPerPageReducer";
-import { findValueElementsPerPage } from "../Redux/actions";
-import { useDispatch, useSelector } from "react-redux";
 
 interface PropsCarousel {
   episodes : Array<object>,
@@ -12,14 +9,17 @@ interface PropsCarousel {
 }
 
 
+function getElementsPerPage(width:number) : number{
+  if (width > 1400) return 3;
+  else if (width <= 1400 && width > 700) return 2; 
+  else return 1;
+}
+
 function Carousel(props : PropsCarousel) {
   const width : number = useWindowWidth();
   const elementsCount : number = props.episodes.length;
   let pagesCount : number = 0;
-  const elementsPerPageAction = useDispatch();
-  elementsPerPageAction(findValueElementsPerPage);
-  const [elementsPerPage, setElementsPerPage] = useState(1);
-  setElementsPerPage(elementsPerPageReducer(elementsPerPage, elementsPerPageAction));
+  const elementsPerPage : number = getElementsPerPage(width);
   elementsCount % elementsPerPage === 0
     ? (pagesCount = Math.floor(elementsCount / elementsPerPage))
     : (pagesCount = Math.floor(elementsCount / elementsPerPage) + 1);

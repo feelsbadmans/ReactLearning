@@ -1,8 +1,8 @@
 export interface EpisodeType {
-    id:number,
+    episode_id:number,
     title:string,
-    season: number,
-    episode: number,
+    season: string,
+    episode: string,
     air_date: string;
     characters: Array<string>
 }

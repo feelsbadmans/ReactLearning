@@ -1,32 +1,44 @@
-import React, { useState, useEffect } from "react";
 import SeasonBlock from "./SeasonBlock/SeasonBlock";
 import "./index.css";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "./actions";
+import { FETCH_DATA_START } from "./Redux/reduxTypes";
+import { FC, useEffect } from "react";
+import { loadingDataState } from "./Redux/loadingDataReducer";
 
 
-function App(){
-  const [ListEpisodes, setListEpisodes] = useState([]);
-  const [Loading, setLoading] = useState(true);
+const App: FC = () =>{
+  const dispatch = useDispatch();
+
+  const { listEpisodes, loading, error} = useSelector(
+    (state : any) => ({
+      listEpisodes: state.loadingDataReducer.listEpisodes,
+      loading: state.loadingDataReducer.loading,
+      error: state.loadingDataReducer.error
+    })
+  );
+
   useEffect(() => {
-    const url = "https://breakingbadapi.com/api/episodes?series=Breaking+Bad";
-    async function fetchData(){
-      const response = await fetch(url);
-      const data = await response.json();
-      setListEpisodes(data);
-      setLoading(false);
-    }
-    fetchData();
+    dispatch(fetchData());
   }, []);
 
-  return (
-    <div>
-      {Loading ? (
+  if (loading){
+    return (
         <h1>
           Loading...
         </h1>
-      ) : (
-        <SeasonBlock data={ListEpisodes}></SeasonBlock>
-      )}
-    </div>
+    );
+  }
+
+  if (error){
+    return (
+      <h1>
+        Error: {error}
+      </h1>
+  );
+  }
+  return (
+      <SeasonBlock data={listEpisodes[0]}></SeasonBlock>
   );
 }
 
