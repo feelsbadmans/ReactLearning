@@ -18,6 +18,7 @@ function Carousel(props : PropsCarousel) {
   console.log(props.key);
   useEffect(() => {
     dispatchPage(findValueElementsPerPage(width, elementsCount));
+    if (X <= pagesCount * -100 + 100) setX(0);
   },[width])
 
   let pagesCount : number = getPages(elementsCount, elementsPerPage);
