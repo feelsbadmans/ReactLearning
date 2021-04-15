@@ -1,10 +1,6 @@
-import React from "react";
-import "../index.css";
-import { EpisodeType } from "../CustomTypes/EpisodeType"
+import "../../index.css";
+import { PropsEpisodeItem } from "../../types/interfaces";
 
-interface PropsEpisodeItem {
-  episode: EpisodeType;
-}
 
 function EpisodeItem(props : PropsEpisodeItem) {
   return (

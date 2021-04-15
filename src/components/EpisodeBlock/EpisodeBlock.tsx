@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import EpisodeItem from "../EpisodeItem/EpisodeItem";
-import "../index.css";
+import "../../index.css";
+import { PropsEpisodeBlock } from "../../types/interfaces";
 
-interface PropsEpisodeBlock {
-  episodes: Array<object>,
-  key: number,
-  X: number
-}
 
 function EpisodeBlock(props : PropsEpisodeBlock) {
   return (
@@ -16,7 +12,7 @@ function EpisodeBlock(props : PropsEpisodeBlock) {
     >
       {props.episodes.map((episode : any) => {
         return (
-          <EpisodeItem episode={episode} key={episode.id}></EpisodeItem>
+          <EpisodeItem episode={episode}></EpisodeItem>
         );
       })}
     </div>
